@@ -20,6 +20,45 @@ public class Classroom {
         int rh = height(root.right);
         return Math.max(lh, rh)+1;
     }
+    /*Count the number of nodes in a tree */
+    public static int count(Node root){
+        if(root == null){
+            return 0;
+        }
+        int lcount = count(root.left);
+        int rcount = count(root.right);
+        return lcount + rcount + 1;
+    }
+    /* Sum of nodes in a tree */
+    public static int sum(Node root){
+        if(root == null){
+            return 0;
+        }
+        int leftSum = sum(root.left);
+        int rightSum = sum(root.right);
+        return leftSum + rightSum + root.data;
+    }
+    /* Diameter of the tree */
+    public static int diameter(Node root){
+        if(root == null){
+            return 0;
+        }
+        int leftDiam = diameter(root.left);
+        int rightDiam = diameter(root.right);
+        int leftHt = height(root.left);
+        int rightHt = height(root.right);
+
+        int selfDiam = leftHt + rightHt + 1;
+        return Math.max(selfDiam,Math.max(leftDiam,rightDiam));
+    }
+/*
+
+             1
+           /   \
+           2    3
+          / \  / \
+         4  5 6   7
+ */
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
